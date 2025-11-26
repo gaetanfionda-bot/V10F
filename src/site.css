@@ -44,3 +44,71 @@ img {
 html {
   scroll-behavior: smooth;
 }
+/* === PARTIE F : FORMULAIRE — HALO, FOCUS, ERREURS, BOUTON === */
+
+/* Style de base */
+input, textarea {
+  background: #000;
+  border: 1px solid #444;
+  padding: 14px;
+  border-radius: 6px;
+  color: #fff;
+  transition: all .25s ease;
+}
+
+/* Halo au focus */
+input:focus,
+textarea:focus {
+  border-color: #cc1010;
+  box-shadow:
+    0 0 8px 2px rgba(204,16,16,.45),
+    0 0 18px 6px rgba(204,16,16,.25);
+  outline: none;
+}
+
+/* Erreur (ajoutée en JS si besoin) */
+.input-error {
+  border-color: #ff3b3b !important;
+  box-shadow:
+    0 0 8px 2px rgba(255,0,0,.45),
+    0 0 18px 6px rgba(255,0,0,.25);
+}
+
+.input-error::placeholder {
+  color: #ff4040;
+}
+
+/* Message d’erreur */
+.error-text {
+  color: #ff3030;
+  font-size: 13px;
+  margin-top: -6px;
+  margin-bottom: 4px;
+  text-align: left;
+}
+
+/* Bouton envoyer */
+.btn-nv {
+  display: inline-block;
+  padding: 14px 34px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #cc1010;
+  color: #fff;
+  border-radius: 6px;
+  transition: all .25s ease;
+  letter-spacing: .05em;
+}
+
+/* Effet glow + hover */
+.btn-nv:hover {
+  background: #ff3030;
+  box-shadow:
+    0 0 14px rgba(255,48,48,.65),
+    0 0 40px rgba(255,48,48,.3);
+  transform: translateY(-2px);
+}
+
+.btn-nv:active {
+  transform: scale(.97);
+}
