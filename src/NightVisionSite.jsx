@@ -27,8 +27,8 @@ export default function NightVisionSite() {
 
         <div className="max-w-4xl mx-auto text-lg text-gray-300">
           <p className="mb-6">
-            NIGHT VISION apporte aux lieux festifs une solution unique : un
-            distributeur automatique de lunettes lumineuses premium.
+            NIGHT VISION apporte aux lieux festifs une solution unique :
+            un distributeur automatique de lunettes lumineuses premium.
           </p>
           <p className="mb-6">
             Installation rapide, expérience fluide et un rendu visuel qui fait vibrer
@@ -49,7 +49,7 @@ export default function NightVisionSite() {
         </div>
       </section>
 
-      {/* AVANTAGES */}
+      {/* POUR QUI */}
       <section className="section-nv text-center">
         <h2 className="title-nv title-halo mb-10">Pour Qui ?</h2>
 
@@ -69,68 +69,67 @@ export default function NightVisionSite() {
         </div>
       </section>
 
-     {/* CONTACT */}
-<section id="contact" className="section-nv text-center">
-  <h2 className="title-nv title-halo mb-6">Contact</h2>
+      {/* CONTACT */}
+      <section id="contact" className="section-nv text-center">
+        <h2 className="title-nv title-halo mb-6">Contact</h2>
 
-  <p className="text-gray-300 mb-6">
-    Vous souhaitez installer une machine NIGHT VISION ?
-    Contactez-nous et nous revenons vers vous sous 24h.
-  </p>
+        <p className="text-gray-300 mb-6">
+          Vous souhaitez installer une machine NIGHT VISION ?  
+          Contactez-nous et nous revenons vers vous sous 24h.
+        </p>
 
-  <form
-    onSubmit={async (e) => {
-      e.preventDefault();
+        <form
+          onSubmit={async (e) => {
+            e.preventDefault();
 
-      const formData = {
-        name: e.target.name.value,
-        email: e.target.email.value,
-        message: e.target.message.value,
-      };
+            const formData = {
+              NomPrenom: e.target.NomPrenom.value,
+              Fonction: e.target.Fonction.value,
+              Etablissement: e.target.Etablissement.value,
+              Type: e.target.Type.value,
+              Ville: e.target.Ville.value,
+              Capacite: e.target.Capacite.value,
+              Telephone: e.target.Telephone.value,
+              Email: e.target.Email.value,
+              Message: e.target.Message.value,
+            };
 
-      const res = await fetch("/api/send-contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+            const res = await fetch("/api/send-contact", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(formData),
+            });
 
-      if (res.ok) {
-        alert("Message envoyé !");
-        e.target.reset();
-      } else {
-        alert("Erreur : impossible d’envoyer le message.");
-      }
-    }}
-    className="max-w-md mx-auto flex flex-col gap-4 mt-6"
-  >
-    <input
-      name="name"
-      required
-      placeholder="Votre nom"
-      className="p-3 bg-black border border-gray-700 rounded"
-    />
+            if (res.ok) {
+              alert("Message envoyé !");
+              e.target.reset();
+            } else {
+              alert("Erreur : impossible d’envoyer le message.");
+            }
+          }}
+          className="max-w-md mx-auto flex flex-col gap-4 mt-6"
+        >
 
-    <input
-      name="email"
-      type="email"
-      required
-      placeholder="Votre email"
-      className="p-3 bg-black border border-gray-700 rounded"
-    />
+          <input name="NomPrenom" required placeholder="Nom & Prénom" className="p-3 bg-black border border-gray-700 rounded" />
+          <input name="Fonction" placeholder="Fonction" className="p-3 bg-black border border-gray-700 rounded" />
+          <input name="Etablissement" placeholder="Établissement" className="p-3 bg-black border border-gray-700 rounded" />
+          <input name="Type" placeholder="Type (Club, Bar, Festival…)" className="p-3 bg-black border border-gray-700 rounded" />
+          <input name="Ville" placeholder="Ville" className="p-3 bg-black border border-gray-700 rounded" />
+          <input name="Capacite" required placeholder="Capacité du lieu" className="p-3 bg-black border border-gray-700 rounded" />
+          <input name="Telephone" required placeholder="Téléphone" className="p-3 bg-black border border-gray-700 rounded" />
+          <input name="Email" type="email" required placeholder="Email" className="p-3 bg-black border border-gray-700 rounded" />
 
-    <textarea
-      name="message"
-      required
-      placeholder="Votre message"
-      className="p-3 bg-black border border-gray-700 rounded h-32"
-    ></textarea>
+          <textarea
+            name="Message"
+            placeholder="Votre message"
+            className="p-3 bg-black border border-gray-700 rounded h-32"
+          ></textarea>
 
-    <button type="submit" className="btn-nv halo-sync">
-      Envoyer
-    </button>
-  </form>
-</section>
-
+          <button type="submit" className="btn-nv halo-sync">
+            Envoyer
+          </button>
+        </form>
+      </section>
 
       {/* FOOTER */}
       <footer className="text-center py-6 text-gray-500 text-sm mt-20">
