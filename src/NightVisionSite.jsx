@@ -69,19 +69,68 @@ export default function NightVisionSite() {
         </div>
       </section>
 
-      {/* CONTACT */}
-      <section id="contact" className="section-nv text-center">
-        <h2 className="title-nv title-halo mb-6">Contact</h2>
+     {/* CONTACT */}
+<section id="contact" className="section-nv text-center">
+  <h2 className="title-nv title-halo mb-6">Contact</h2>
 
-        <p className="text-gray-300 mb-6">
-          Vous souhaitez installer une machine NIGHT VISION ?  
-          Contactez-nous et nous revenons vers vous sous 24h.
-        </p>
+  <p className="text-gray-300 mb-6">
+    Vous souhaitez installer une machine NIGHT VISION ?
+    Contactez-nous et nous revenons vers vous sous 24h.
+  </p>
 
-        <a href="mailto:contact@nightvision.fr" className="btn-nv halo-sync">
-          Envoyer un message
-        </a>
-      </section>
+  <form
+    onSubmit={async (e) => {
+      e.preventDefault();
+
+      const formData = {
+        name: e.target.name.value,
+        email: e.target.email.value,
+        message: e.target.message.value,
+      };
+
+      const res = await fetch("/api/send-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        alert("Message envoyé !");
+        e.target.reset();
+      } else {
+        alert("Erreur : impossible d’envoyer le message.");
+      }
+    }}
+    className="max-w-md mx-auto flex flex-col gap-4 mt-6"
+  >
+    <input
+      name="name"
+      required
+      placeholder="Votre nom"
+      className="p-3 bg-black border border-gray-700 rounded"
+    />
+
+    <input
+      name="email"
+      type="email"
+      required
+      placeholder="Votre email"
+      className="p-3 bg-black border border-gray-700 rounded"
+    />
+
+    <textarea
+      name="message"
+      required
+      placeholder="Votre message"
+      className="p-3 bg-black border border-gray-700 rounded h-32"
+    ></textarea>
+
+    <button type="submit" className="btn-nv halo-sync">
+      Envoyer
+    </button>
+  </form>
+</section>
+
 
       {/* FOOTER */}
       <footer className="text-center py-6 text-gray-500 text-sm mt-20">
