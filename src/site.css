@@ -1,105 +1,46 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* === PARTIE E : OPTIMISATIONS GLOBALES RESPONSIVE === */
 
-/* STYLE GLOBAL */
-body {
-  background-color: #000000;
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-family: "Cinzel", serif;
-}
-
-/* HALO PULSE AUTOUR DES ÉLÉMENTS ROUGES */
-@keyframes haloPulse {
-  0%,100% {
-    box-shadow:
-      0 0 12px 4px rgba(204,16,16,.45),
-      0 0 40px 10px rgba(204,16,16,.3);
+/* Titres adaptés au mobile */
+@media (max-width: 480px) {
+  .title-nv {
+    font-size: 28px;
+    line-height: 1.25;
   }
-  50% {
-    box-shadow:
-      0 0 28px 12px rgba(204,16,16,.9),
-      0 0 75px 26px rgba(204,16,16,.6);
+
+  .section-nv {
+    padding: 60px 0;
+  }
+
+  .logo-animated {
+    font-size: 22px !important;
   }
 }
 
-.halo-sync {
-  animation: haloPulse 4s ease-in-out infinite;
-  transition: all .3s ease;
+/* Espacements plus cohérents */
+.section-nv p {
+  line-height: 1.55;
 }
 
-/* GLOW TEXTE ROUGE */
-@keyframes textGlow {
-  0%,100% {
-    text-shadow:
-      0 0 10px rgba(204,16,16,.45),
-      0 0 30px rgba(204,16,16,.25);
-  }
-  50% {
-    text-shadow:
-      0 0 20px rgba(204,16,16,.95),
-      0 0 40px rgba(204,16,16,.7);
-  }
+/* Images plus douces sur mobile */
+img {
+  object-fit: cover;
+  max-width: 100%;
 }
 
-.title-halo {
-  animation: textGlow 4s ease-in-out infinite;
-}
-
-/* LOGO NIGHT VISION PULSÉ */
-@keyframes pulseGlowLogo {
-  0%,100% {
-    text-shadow:
-      0 0 20px rgba(204,16,16,0.6),
-      0 0 40px rgba(204,16,16,0.4);
-    color: #CC1010;
+/* Formulaire mobile */
+@media (max-width: 480px) {
+  input, textarea {
+    font-size: 14px;
+    padding: 10px;
   }
-  50% {
-    text-shadow:
-      0 0 40px rgba(204,16,16,0.95),
-      0 0 80px rgba(204,16,16,0.6);
-    color: #ff3030;
+
+  button.btn-nv {
+    padding: 10px 20px;
+    font-size: 14px;
   }
 }
 
-.logo-animated {
-  animation: pulseGlowLogo 2s infinite ease-in-out;
-}
-
-/* HEADER GLASS NOIR */
-.nv-header {
-  backdrop-filter: blur(6px);
-  background: rgba(0,0,0,.78);
-  border-bottom: 1px solid rgba(38,38,38,.9);
-}
-
-/* BOUTON ROUGE NV */
-.btn-nv {
-  background: linear-gradient(90deg, #CC1010, #9A0C0C);
-  padding: 12px 26px;
-  font-weight: bold;
-  border-radius: 4px;
-  transition: all .25s ease;
-  border: 1px solid #550505;
-}
-
-.btn-nv:hover {
-  background: linear-gradient(90deg, #E91414, #B20E0E);
-  transform: scale(1.04);
-  box-shadow: 0 0 20px rgba(204,16,16,.7);
-}
-
-/* SECTIONS */
-.section-nv {
-  padding: 80px 0;
-}
-
-/* TITRES */
-.title-nv {
-  font-size: 38px;
-  margin-bottom: 20px;
-  font-weight: 700;
-  color: #ffffff;
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
 }
